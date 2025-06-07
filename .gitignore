@@ -1,0 +1,18 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Audio recordings and models
+data/audio/
+data/models/
+
+# Generated reports
+reports/
+
+# VS Code settings
+.vscode/
+
+# Anything else you don’t want under version control
