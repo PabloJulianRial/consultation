@@ -1,14 +1,59 @@
 import os
-import json
 import datetime
 import subprocess
+import threading
+import numpy as np
+import sounddevice as sd
+from pydub import AudioSegment
+import json
 import PySimpleGUI as sg
 from utils import (
     load_all_question_sets,
-    record_audio_for_question,
     transcribe_audio_file,
     generate_docx_report
 )
+
+# Globals for recording
+recorder_stream = None
+recorder_chunks = []
+recorder_lock = threading.Lock()
+
+def start_recording():
+    """Begin capturing microphone audio in recorder_chunks."""
+    global recorder_stream, recorder_chunks
+    recorder_chunks = []
+    fs = 16000
+    def callback(indata, frames, time, status):
+        if status:
+            print(status)
+        with recorder_lock:
+            recorder_chunks.append(indata.copy())
+    recorder_stream = sd.InputStream(samplerate=fs, channels=1, callback=callback)
+    recorder_stream.start()
+
+
+def stop_recording_and_save(session_id, question_id):
+    """Stop capture, save WAV, return path."""
+    global recorder_stream, recorder_chunks
+    recorder_stream.stop()
+    recorder_stream.close()
+    data = np.concatenate(recorder_chunks, axis=0)
+    # convert to int16 PCM
+    audio_int16 = (data * 32767).astype(np.int16)
+    wav_folder = os.path.join(os.path.dirname(__file__), "data", "audio")
+    os.makedirs(wav_folder, exist_ok=True)
+    safe_session = session_id.replace(':', '').replace('-', '')
+    ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    fname = f"session_{safe_session}_q_{question_id}_{ts}.wav"
+    path = os.path.join(wav_folder, fname)
+    seg = AudioSegment(
+        audio_int16.tobytes(),
+        frame_rate=16000,
+        sample_width=2,
+        channels=1
+    )
+    seg.export(path, format='wav')
+    return path
 
 
 def transform_question_sets(raw_sets):
@@ -32,6 +77,7 @@ def transform_question_sets(raw_sets):
         final[category] = mapped
     return final
 
+# Load and prepare question sets
 raw_sets = load_all_question_sets()
 question_sets = transform_question_sets(raw_sets)
 
@@ -53,7 +99,9 @@ def session_setup_window():
             win.close()
             return None, None, None
         if event == "Start Session":
-            name, dob, cat = vals["-PATIENT_NAME-"].strip(), vals["-PATIENT_DOB-"].strip(), vals["-CATEGORY-"]
+            name = vals["-PATIENT_NAME-"].strip()
+            dob = vals["-PATIENT_DOB-"].strip()
+            cat = vals["-CATEGORY-"]
             if not name or not dob or not cat:
                 sg.popup("Please fill all fields.")
                 continue
@@ -113,15 +161,12 @@ def question_window():
         window['-QUESTION_TEXT-'].update(slot['question_text'])
         window['-TRANSCRIPT-'].update(slot['transcript'])
         window['-TYPED-'].update(slot['typed_answer'])
-        # Section progress
         sc = sess['current_subcat']
         sec_total = len(sess['questions_by_subcat'][sc])
         sec_idx = sess['current_index'] + 1
         window['-SECTION_PROG-'].update(f"Section: {sec_idx}/{sec_total}")
-        # Overall progress
         totals = [len(lst) for lst in sess['questions_by_subcat'].values()]
         overall_total = sum(totals)
-        # count before
         keys = list(sess['questions_by_subcat'].keys())
         before = sum(len(sess['questions_by_subcat'][k]) for k in keys[:keys.index(sc)])
         overall_idx = before + sec_idx
@@ -131,7 +176,7 @@ def question_window():
         [sg.Text('Section:'), sg.Combo(subcats, default_value=sess['current_subcat'], key='-SUBCAT-', enable_events=True)],
         [sg.Text('', key='-SECTION_PROG-', size=(20,1)), sg.Text('', key='-TOTAL_PROG-', size=(20,1))],
         [sg.Text('', key='-QUESTION_TEXT-', size=(60,3), font=('Arial',12))],
-        [sg.Button('Record Answer', key='-RECORD-'), sg.Button('Play Audio', key='-PLAY-')],
+        [sg.Button('Start Recording', key='-START_REC-'), sg.Button('Stop Recording', key='-STOP_REC-', disabled=True), sg.Button('Play Audio', key='-PLAY-')],
         [sg.Multiline('', size=(60,6), key='-TRANSCRIPT-', disabled=True)],
         [sg.Text('Typed Answer / Notes:')],
         [sg.Multiline('', size=(60,4), key='-TYPED-')],
@@ -156,14 +201,20 @@ def question_window():
             sess['current_index'] = 0
             refresh_ui(window)
 
-        elif event == '-RECORD-':
-            session_id = sess['started_at']
-            qid = get_slot()['question_id']
-            wav = record_audio_for_question(session_id, qid)
+        elif event == '-START_REC-':
+            start_recording()
+            window['-START_REC-'].update(disabled=True)
+            window['-STOP_REC-'].update(disabled=False)
+
+        elif event == '-STOP_REC-':
+            wav = stop_recording_and_save(sess['started_at'], get_slot()['question_id'])
+            get_slot()['audio_path'] = wav
             new_t = transcribe_audio_file(wav)
             existing = window['-TRANSCRIPT-'].get().rstrip()
             combined = existing + ('\n' if existing else '') + new_t
             window['-TRANSCRIPT-'].update(combined)
+            window['-START_REC-'].update(disabled=False)
+            window['-STOP_REC-'].update(disabled=True)
 
         elif event == '-PLAY-':
             path = get_slot()['audio_path']
@@ -229,7 +280,6 @@ def run_app():
     if res == 'CANCEL':
         sg.popup('Session cancelled.')
         return
-    # Flatten
     sess = temporary_session_data
     flat = []
     for sub in sess['questions_by_subcat'].values():
