@@ -1,254 +1,170 @@
 {
-  "Communication and Interaction": [
-    {
-      "id": 1,
-      "text": "How does Johnny communicate his basic needs?"
-    },
-    {
-      "id": 2,
-      "text": "Does he use words, phrases, sounds, lead you by the hand, gestures?"
-    },
-    {
-      "id": 3,
-      "text": "Or does he not attempt to communicate his needs?"
-    },
-    {
-      "id": 4,
-      "text": "Do adults need to interpret what he wants?"
-    },
-    {
-      "id": 5,
-      "text": "Does Johnny respond to his name?"
-    },
-    {
-      "id": 6,
-      "text": "Does he give you eye contact?"
-    },
-    {
-      "id": 7,
-      "text": "Does he understand routines, simple instructions?"
-    },
-    {
-      "id": 8,
-      "text": "Does he understand information and explanations?"
-    },
-    {
-      "id": 9,
-      "text": "Does Johnny interact with other people, with children, with adults?"
-    },
-    {
-      "id": 10,
-      "text": "Does he initiate interactions or does he respond to interactions initiated by others?"
-    },
-    {
-      "id": 11,
-      "text": "Does he have a good relationship with parents, siblings, or adults or peers in the nursery?"
-    },
-    {
-      "id": 12,
-      "text": "Does he play alongside other children?"
-    },
-    {
-      "id": 13,
-      "text": "Does he tolerate other children around?"
-    },
-    {
-      "id": 14,
-      "text": "Does he know how to share or take turns?"
-    },
-    {
-      "id": 15,
-      "text": "Does he seek interaction with adults for physical comfort or for help?"
-    }
-  ],
-  "Cognition and Learning": [
-    {
-      "id": 1,
-      "text": "What’s Johnny’s play like?"
-    },
-    {
-      "id": 2,
-      "text": "Is his play sensory?"
-    },
-    {
-      "id": 3,
-      "text": "Is his play physical?"
-    },
-    {
-      "id": 4,
-      "text": "Does he play imaginatively?"
-    },
-    {
-      "id": 5,
-      "text": "Is his play repetitive and narrow in scope?"
-    },
-    {
-      "id": 6,
-      "text": "Does he play with toys?"
-    },
-    {
-      "id": 7,
-      "text": "Does he like books?"
-    },
-    {
-      "id": 8,
-      "text": "Does he respond to questions in stories?"
-    },
-    {
-      "id": 9,
-      "text": "Does he sit down for group sessions?"
-    },
-    {
-      "id": 10,
-      "text": "Does he engage in any adult-led tasks?"
-    },
-    {
-      "id": 11,
-      "text": "Can his play be diverted?"
-    },
-    {
-      "id": 12,
-      "text": "How is his focus and attention?"
-    },
-    {
-      "id": 13,
-      "text": "Does he tend to move around different activities or focus on activities for short periods or long periods?"
-    },
-    {
-      "id": 14,
-      "text": "Does he enjoy moving around, outdoor play?"
-    },
-    {
-      "id": 15,
-      "text": "Does he have any knowledge of numbers, letters, shapes, or colors?"
-    },
-    {
-      "id": 16,
-      "text": "Does he like singing or dancing?"
-    },
-    {
-      "id": 17,
-      "text": "Can he sing or copy actions in songs?"
-    },
-    {
-      "id": 18,
-      "text": "Does he play with other children?"
-    }
-  ],
-  "Social, Emotional and Mental Health (SEMH)": [
-    {
-      "id": 1,
-      "text": "Is Johnny settled and happy to attend nursery?"
-    },
-    {
-      "id": 2,
-      "text": "Does he transition well from home to school and from school to home?"
-    },
-    {
-      "id": 3,
-      "text": "Does he separate well from parents?"
-    },
-    {
-      "id": 4,
-      "text": "Does he get upset or distressed?"
-    },
-    {
-      "id": 5,
-      "text": "What makes him upset or distressed?"
-    },
-    {
-      "id": 6,
-      "text": "When he’s distressed or upset, what are his behaviours like?"
-    },
-    {
-      "id": 7,
-      "text": "How does he calm down?"
-    },
-    {
-      "id": 8,
-      "text": "How long does it take to calm down?"
-    },
-    {
-      "id": 9,
-      "text": "Does he have good attachment relationships with the adults in the setting?"
-    },
-    {
-      "id": 10,
-      "text": "Does he play with other children?"
-    },
-    {
-      "id": 11,
-      "text": "Does he acknowledge what goes on around him?"
-    },
-    {
-      "id": 12,
-      "text": "Does he show emotions?"
-    },
-    {
-      "id": 13,
-      "text": "Is he in his own world most of the time?"
-    }
-  ],
-  "Physical and Sensory": [
-    {
-      "id": 1,
-      "text": "Does Johnny have any sensory difficulties such as aversion to noises or loud sounds, crowded or busy environments, sensory-seeking or avoidance behaviors like tiptoeing, constant movement, flapping hands, spinning, climbing, or putting objects in his mouth?"
-    },
-    {
-      "id": 2,
-      "text": "Does he have an aversion to certain food textures?"
-    },
-    {
-      "id": 3,
-      "text": "Does he eat independently?"
-    },
-    {
-      "id": 4,
-      "text": "Is he toilet trained?"
-    },
-    {
-      "id": 5,
-      "text": "Can he use the toilet independently?"
-    },
-    {
-      "id": 6,
-      "text": "Can he manage his self-care needs independently, such as dressing and undressing, washing hands, feeding himself, toileting?"
-    },
-    {
-      "id": 7,
-      "text": "Are his gross motor skills developing well?"
-    },
-    {
-      "id": 8,
-      "text": "Can he run, jump, climb, or ride a bike?"
-    },
-    {
-      "id": 9,
-      "text": "Is he good at managing his environment, spatial awareness, balance, and coordination?"
-    },
-    {
-      "id": 10,
-      "text": "Are his fine motor skills developing well?"
-    },
-    {
-      "id": 11,
-      "text": "Can he engage in scribbling, mark making, or any hand motor skills activities?"
-    },
-    {
-      "id": 12,
-      "text": "Is he aware of dangers?"
-    },
-    {
-      "id": 13,
-      "text": "Does he respond to “no” and “stop” instructions?"
-    },
-    {
-      "id": 14,
-      "text": "Can he hold hands when outdoors?"
-    },
-    {
-      "id": 15,
-      "text": "Does he sleep well?"
-    }
-  ]
+  "undefined": {
+    "Communication and Interaction": [
+      { "id": 1, "text": "How long has Johnny attended this setting?" },
+      { "id": 2, "text": "How many hours a week does he attend?" },
+      { "id": 3, "text": "Who lives at home?" },
+      { "id": 4, "text": "What languages do you speak at home?" },
+      {
+        "id": 5,
+        "text": "Are there any other services involved supporting him?"
+      },
+      { "id": 6, "text": "Has he got any diagnosis?" },
+      { "id": 7, "text": "Has he been referred to any services?" },
+      { "id": 8, "text": "How was your pregnancy and early development?" },
+      { "id": 9, "text": "Were there any concerns?" },
+      { "id": 10, "text": "What happened as a result of concerns?" },
+      { "id": 11, "text": "What services got involved and when?" },
+      { "id": 12, "text": "How does Johnny communicate his basic needs?" },
+      {
+        "id": 13,
+        "text": "Does he use words, phrases, sounds, lead you by the hand, gestures?"
+      },
+      { "id": 14, "text": "Or does he not attempt to communicate his needs?" },
+      { "id": 15, "text": "Do adults need to interpret what he wants?" },
+      { "id": 16, "text": "Does Johnny respond to his name?" },
+      { "id": 17, "text": "Does he give you eye contact?" },
+      { "id": 18, "text": "Does he understand routines, simple instructions?" },
+      { "id": 19, "text": "Does he understand information and explanations?" },
+      {
+        "id": 20,
+        "text": "Does Johnny interact with other people, with children, with adults?"
+      },
+      {
+        "id": 21,
+        "text": "Does he initiate interactions or does he respond to interactions initiated by others?"
+      }
+    ],
+    "Cognition and Learning": [
+      { "id": 22, "text": "What’s Johnny’s play like?" },
+      { "id": 23, "text": "Is his play sensory?" },
+      { "id": 24, "text": "Is his play physical?" },
+      { "id": 25, "text": "Does he play imaginatively?" },
+      { "id": 26, "text": "Is his play repetitive and narrow in scope?" },
+      { "id": 27, "text": "Does he play with toys?" },
+      { "id": 28, "text": "Does he like books?" },
+      { "id": 29, "text": "Does he respond to questions in stories?" },
+      { "id": 30, "text": "Does he sit down for group sessions?" },
+      { "id": 31, "text": "Does he engage in any adult-led tasks?" },
+      { "id": 32, "text": "Can his play be diverted?" },
+      { "id": 33, "text": "How is his focus and attention?" },
+      {
+        "id": 34,
+        "text": "Does he tend to move around different activities or focus on activities for short periods or long periods?"
+      },
+      { "id": 35, "text": "Does he enjoy moving around, outdoor play?" },
+      {
+        "id": 36,
+        "text": "Does he have any knowledge of numbers, letters, shapes, or colors?"
+      },
+      { "id": 37, "text": "Does he like singing, dancing?" },
+      { "id": 38, "text": "Can he sing, copy actions in songs?" },
+      { "id": 39, "text": "Does he play with other children?" }
+    ],
+    "Social, Emotional and Mental Health (SEMH)": [
+      { "id": 40, "text": "Is Johnny settled and happy to attend nursery?" },
+      {
+        "id": 41,
+        "text": "Does he transition well from home to school and from school to home?"
+      },
+      { "id": 42, "text": "Does he separate well from parents?" },
+      { "id": 43, "text": "Does he get upset or distressed?" },
+      { "id": 44, "text": "What makes him upset or distressed?" },
+      {
+        "id": 45,
+        "text": "When he’s distressed or upset, what are his behaviours like?"
+      },
+      { "id": 46, "text": "How does he calm down?" },
+      { "id": 47, "text": "How long does it take to calm down?" },
+      {
+        "id": 48,
+        "text": "Does he have good attachment relationships with the adults in the setting?"
+      },
+      { "id": 49, "text": "Does he play with other children?" },
+      { "id": 50, "text": "Does he acknowledge what goes on around him?" },
+      { "id": 51, "text": "Does he show emotions?" },
+      { "id": 52, "text": "Is he in his own world most of the time?" }
+    ],
+    "Physical and Sensory": [
+      {
+        "id": 53,
+        "text": "Does Johnny have any sensory difficulties such as aversion to noises or loud sounds, crowded or busy environments, sensory-seeking or avoidance behaviors?"
+      },
+      {
+        "id": 54,
+        "text": "Does he have an aversion to certain food textures?"
+      },
+      { "id": 55, "text": "Does he eat independently?" },
+      { "id": 56, "text": "Is he toilet trained?" },
+      { "id": 57, "text": "Can he use the toilet independently?" },
+      {
+        "id": 58,
+        "text": "Can he manage his self-care needs independently, such as dressing and undressing, washing hands, feeding himself, toileting?"
+      },
+      { "id": 59, "text": "Are his gross motor skills developing well?" },
+      { "id": 60, "text": "Can he run, jump, climb, or ride a bike?" },
+      {
+        "id": 61,
+        "text": "Is he good at managing his environment, spatial awareness, balance, and coordination?"
+      },
+      { "id": 62, "text": "Are his fine motor skills developing well?" },
+      {
+        "id": 63,
+        "text": "Can he engage in scribbling, mark making, or any hand motor skills activities?"
+      },
+      { "id": 64, "text": "Is he aware of dangers?" },
+      { "id": 65, "text": "Does he respond to “no” and “stop” instructions?" },
+      { "id": 66, "text": "Can he hold hands when outdoors?" },
+      { "id": 67, "text": "Does he sleep well?" }
+    ]
+  },
+
+  "ASD": {
+    "Communication and Interaction": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+    "Cognition and Learning": [25, 26, 30, 31, 33, 34, 38],
+    "Social, Emotional and Mental Health (SEMH)": [40, 41, 43, 44, 45, 46, 47],
+    "Physical and Sensory": [53, 54, 59, 60, 61]
+  },
+
+  "ASD non-verbal": {
+    "Communication and Interaction": [12, 13, 14, 15, 17],
+    "Cognition and Learning": [26, 31],
+    "Social, Emotional and Mental Health (SEMH)": [41, 43],
+    "Physical and Sensory": [53, 54]
+  },
+
+  "Global delay": {
+    "Communication and Interaction": [12, 16],
+    "Cognition and Learning": [25, 28, 29],
+    "Social, Emotional and Mental Health (SEMH)": [40, 48],
+    "Physical and Sensory": [55, 58]
+  },
+
+  "ASD non-diagnosed": {
+    "Communication and Interaction": [16, 21],
+    "Cognition and Learning": [33, 38],
+    "Social, Emotional and Mental Health (SEMH)": [41, 49],
+    "Physical and Sensory": [54, 62]
+  },
+
+  "Down syndrome": {
+    "Communication and Interaction": [13, 16, 17],
+    "Cognition and Learning": [28, 30],
+    "Social, Emotional and Mental Health (SEMH)": [40, 49],
+    "Physical and Sensory": [59, 60]
+  },
+
+  "language": {
+    "Communication and Interaction": [12, 13, 19, 20],
+    "Cognition and Learning": [29, 34],
+    "Social, Emotional and Mental Health (SEMH)": [51, 52],
+    "Physical and Sensory": [54, 58]
+  },
+
+  "cerebral palsy": {
+    "Communication and Interaction": [13, 16],
+    "Cognition and Learning": [25, 31],
+    "Social, Emotional and Mental Health (SEMH)": [43, 49],
+    "Physical and Sensory": [58, 59, 60]
+  }
 }

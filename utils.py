@@ -16,8 +16,11 @@ VOSK_MODEL = VoskModel(
 
 def load_all_question_sets():
     """
-    Reads JSON files under data/questions/ and returns a dict
-    mapping diagnostic category to a list of question dicts ({id, text}).
+    Reads JSON files under data/questions/ and returns a dict mapping
+    diagnostic category to a dict of subcategories -> list of question dicts.
+    Supports two formats:
+    1) A single JSON with top-level keys as categories mapping to subcat->list.
+    2) One JSON per category, each with {'diagnostic_category': str, 'questions': [...]}
     """
     folder = os.path.join(os.path.dirname(__file__), "data", "questions")
     question_sets = {}
@@ -27,16 +30,26 @@ def load_all_question_sets():
         path = os.path.join(folder, fname)
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            # If file defines multiple categories
-            if isinstance(data, dict) and all(isinstance(v, list) for v in data.values()):
-                for category, qlist in data.items():
-                    question_sets[category] = qlist
-            else:
-                # Single category file format
-                category = data.get('diagnostic_category')
-                questions = data.get('questions', [])
-                if category:
-                    question_sets[category] = questions
+            # Case A: full combined file: category -> subcategory -> list
+            if isinstance(data, dict) and data:
+                # detect if values are dict of lists (subcategories)
+                first_val = next(iter(data.values()))
+                if isinstance(first_val, dict):
+                    # assume this file maps categories to subcat->list
+                    for category, subcats in data.items():
+                        question_sets[category] = subcats
+                    continue
+                # Case B: legacy: category -> list of questions
+                if all(isinstance(v, list) for v in data.values()):
+                    for category, qlist in data.items():
+                        # no subcat info, treat all questions under a default subcat
+                        question_sets[category] = {"All": qlist}
+                    continue
+            # Case C: one-file-per-category format
+            category = data.get('diagnostic_category')
+            questions = data.get('questions', [])
+            if category:
+                question_sets[category] = {"All": questions}
     return question_sets
 
 
@@ -113,7 +126,7 @@ def generate_docx_report(session_data):
     Given in-memory session_data, create a DOCX report in 'reports/' and
     return its path.
     session_data keys: patient_name, patient_dob, diagnostic_category,
-      started_at, questions (list of dicts), general_notes (list).
+      started_at, questions (flat list of slots), general_notes (list).
     """
     reports_folder = os.path.join(os.path.dirname(__file__), 'reports')
     os.makedirs(reports_folder, exist_ok=True)
